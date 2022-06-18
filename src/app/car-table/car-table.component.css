@@ -1,0 +1,7 @@
+.car-table {
+  @apply container flex justify-center mx-auto mt-4 max-w-7xl px-2 sm:px-6 lg:px-8;
+
+  /* &_main {
+    @apply border-b border-gray-200 shadow;
+  }  */
+}
