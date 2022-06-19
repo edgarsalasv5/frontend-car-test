@@ -1,0 +1,88 @@
+<div class=".main-modal-container" role="dialog" aria-modal="true">
+  <div class="modal-container-1"></div>
+  <div class="inset-container">
+    <div
+      class="item-container"
+    >
+      <div
+        class="card-container"
+      >
+        <form class="form">
+          <div class="main-container">
+            <div class="input-1">
+              <label class="main-label"> Id del auto </label>
+              <input class="input-id" type="text" placeholder="1" />
+            </div>
+            <div class="container-brand">
+              <label class="main-label"> Marca </label>
+              <input class="input-brand" type="text" placeholder="Audi" />
+            </div>
+          </div>
+          <div class="main-container">
+            <div class="container-model">
+              <label class="main-label"> Modelo </label>
+              <input class="input-model" type="text" placeholder="2022" />
+            </div>
+          </div>
+          <div class="sub-3-container">
+            <div class="sub-3-container-div">
+              <label class="main-label" for="grid-city"> Color </label>
+              <input
+                class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="grid-city"
+                type="text"
+                placeholder="Rojo"
+              />
+            </div>
+            <div class="sub-3-container-div">
+              <label class="main-label" for="grid-state"> Estado </label>
+              <div class="relative">
+                <select class="status-selector" id="grid-state">
+                  <option>Activo</option>
+                  <option>Inactivo</option>
+                </select>
+                <div class="selector-container">
+                  <svg
+                    class="svg-container"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="sub-3-container-div">
+              <label class="main-label" for="grid-zip">
+                Fecha de Ingreso
+              </label>
+              <input class="date-input" type="text" placeholder="90210" />
+            </div>
+          </div>
+        </form>
+        <div class="button-container">
+          <button
+            type="button"
+            class="save-button"
+            (click)="openModalConfirm()"
+          >
+            Guardar
+          </button>
+
+          <button
+            type="button"
+            class="cancel-button"
+            (click)="onChangeModalEmit()"
+          >
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="confirmModalStatus">
+    <app-create-confirm (modalChangeEvent)="openModalConfirm()"></app-create-confirm>
+  </div>
+</div>

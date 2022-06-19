@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   filterStatus = false
+  carCreateModalStatus = false
 
   constructor() { }
 
@@ -18,5 +19,10 @@ export class HomeComponent implements OnInit {
     this.filterStatus = !this.filterStatus
     console.log('filterStatus',this.filterStatus)
   }
+
+  openModalCreateCar(){
+    this.carCreateModalStatus = !this.carCreateModalStatus
+  }
+
 
 }

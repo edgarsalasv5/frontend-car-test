@@ -1,5 +1,6 @@
 <app-header></app-header>
 <main class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+  <button class="search-button" (click)="openModalCreateCar()">Crear Vehiculo</button>
   <button class="search-button" (click)="openFilter()">Buscar</button>
   <div *ngIf="filterStatus">
     <div class="grid justify-items-center">
@@ -9,6 +10,9 @@
         <button class="search-button">Buscar</button>
       </div>
     </div>
+  </div>
+  <div *ngIf="carCreateModalStatus">
+    <app-car-create-modal (modalChangeEvent)="openModalCreateCar()"></app-car-create-modal>
   </div>
   <app-car-table></app-car-table>
 </main>

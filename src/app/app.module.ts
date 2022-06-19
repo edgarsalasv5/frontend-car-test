@@ -13,9 +13,11 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { HomeComponent } from './home/home.component';
 import { CarTableComponent } from './car-table/car-table.component';
 import { TableFilterComponent } from './table-filter/table-filter.component';
+import { CarCreateModalComponent } from './car-create-modal/car-create-modal.component';
+import { CreateConfirmComponent } from './create-confirm/create-confirm.component';
 
 @NgModule({
-  declarations: [AppComponent, AppHeader, SignInComponent, SignUpComponent, HomeComponent, CarTableComponent, TableFilterComponent],
+  declarations: [AppComponent, AppHeader, SignInComponent, SignUpComponent, HomeComponent, CarTableComponent, TableFilterComponent, CarCreateModalComponent, CreateConfirmComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
