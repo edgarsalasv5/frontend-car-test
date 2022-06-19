@@ -11,7 +11,7 @@
 }
 
 .font-form_header {
-  @apply mt-6 text-center text-3xl font-extrabold text-gray-900;
+  @apply mt-4 text-center text-xl font-extrabold text-gray-900;
 }
 
 .font-form_body {

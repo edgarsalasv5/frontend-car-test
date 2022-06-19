@@ -1,8 +1,26 @@
-import { ActionReducerMap, MetaReducer } from '@ngrx/store';
-import { IAppState } from './app.interface';
-import { AppReducer } from './reducers/app.reducer';
+import { ActionReducer, ActionReducerMap, MetaReducer } from '@ngrx/store';
 
-export const reducers: ActionReducerMap<IAppState> = {
-  AppState: AppReducer,
+import { environment } from "../../environments/environment"
+import * as fromCar from './modules/car/reducer';
+
+export interface AppState {
+  [fromCar.carFeatureKey]: fromCar.State;
+}
+
+export const reducers: ActionReducerMap<AppState> = {
+  [fromCar.carFeatureKey]:
+    fromCar.carReducer
 };
-export const metaReducers: MetaReducer<IAppState>[] = [];
+
+export const metaReducers: MetaReducer<AppState>[] =
+  !environment.production ? [debug] : [];
+
+
+function debug(reducer: ActionReducer<any>): ActionReducer<any> {
+  return function(state, action) {
+    console.debug('state', state);
+    console.debug('action', action);
+  
+    return reducer(state, action);
+  };
+}

@@ -1,14 +1,19 @@
 <app-header></app-header>
-<button class="search-button" (click)="openModalCreateCar()">Crear Vehiculo</button>
+
 <main class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-  <h2 class="text-2xl font-bold mt-8">Autos registrados</h2>
+  <div class="flex w-full justify-between items-center mt-8">
+    <h2 class="text-2xl font-bold">Autos registrados</h2>
+    <div>
+      <button class="add-button" (click)="openModalCreateCar()">Crear Vehiculo</button>
+    </div>
+  </div>
   <button class="button-underline" (click)="openFilter()">{{!filterStatus ? 'Mostrar filtros': 'Ocultar filtros'
     }}</button>
   <div *ngIf="filterStatus" class="mb-8">
     <app-table-filter></app-table-filter>
     <button class="search-button">Buscar</button>
   </div>
-  <div *ngIf="carCreateModalStatus">
+  <div *ngIf="carCreateModalStatus" class="w-full overflow-auto">
     <app-car-create-modal (modalChangeEvent)="openModalCreateCar()"></app-car-create-modal>
   </div>
   <!--<div *ngIf="false">
