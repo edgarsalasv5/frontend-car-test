@@ -1,0 +1,31 @@
+.sign-up {
+  @apply min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8;
+}
+
+.sign-up_body {
+  @apply max-w-md w-full space-y-8;
+}
+
+.font-logo_admin {
+  @apply text-center text-black text-5xl font-bold;
+}
+
+.font-form_header {
+  @apply mt-6 text-center text-3xl font-extrabold text-gray-900;
+}
+
+.font-form_body {
+  @apply rounded-md shadow-sm -space-y-px;
+}
+
+.font-form_field {
+  @apply appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm;
+}
+
+.submit-button_span {
+  @apply absolute left-0 inset-y-0 flex items-center pl-3;
+}
+
+.submit-button_svg {
+  @apply h-5 w-5 text-white group-hover:text-indigo-400;
+}
