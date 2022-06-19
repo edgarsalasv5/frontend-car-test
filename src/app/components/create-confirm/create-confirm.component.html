@@ -1,0 +1,31 @@
+<div class=".main-modal-container" role="dialog" aria-modal="true">
+  <div class="modal-container-1"></div>
+
+  <div class="inset-container">
+    <div
+      class="item-container"
+    >
+      <div
+        class="card-container"
+      >
+        <p>¿Estás seguro que deseas guardar este vehiculo?</p>
+        <div class="button-container">
+          <button
+            type="button"
+            class="save-button"
+          >
+            Guardar
+          </button>
+
+          <button
+            type="button"
+            class="cancel-button"
+            (click)="onChangeModalEmit()"
+          >
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

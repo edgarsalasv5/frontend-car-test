@@ -1,7 +1,19 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
+import { Injectable } from '@angular/core';
 import { retry, catchError } from 'rxjs/operators';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { ISignInResponse } from '../views/sign-in/sign-in.types';
+
+interface ICredentialsSignIn {
+  email: string;
+  password: string;
+}
+
+interface ICredentialsSignUp {
+  email: string;
+  name: string;
+  password: string;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -19,14 +31,14 @@ export class ApiService {
 
   signIn(credentials: ICredentialsSignIn) {
     return this.http
-      .post(this.apiURL + '/signin/', credentials)
+      .post<ISignInResponse>(this.apiURL + '/auth/signin', credentials)
       .pipe(retry(1), catchError(this.handleError));
   }
 
   handleError(error: any) {
     let errorMessage = '';
-    if (error.error instanceof ErrorEvent) {
-      errorMessage = error.error.message;
+    if (error.error) {
+      errorMessage = error.error.message || `Algo salio mal`;
     } else {
       errorMessage = `Algo salio mal`;
     }
