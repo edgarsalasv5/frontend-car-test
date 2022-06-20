@@ -37,7 +37,7 @@
                 <p>{{ car.color }}</p>
               </td>
               <td class="car-table-body">
-                <p>{{ car.input_date | date }}</p>
+                <p>{{ getFormDate(car.input_date) }}</p>
               </td>
               <td class="car-table-body">
                 <p>{{ car.status ? 'Activo' : 'Inactivo' }}</p>

@@ -7,11 +7,8 @@
       <button class="add-button" (click)="openModalCreateCar()">Crear Vehiculo</button>
     </div>
   </div>
-  <button class="button-underline" (click)="openFilter()">{{!filterStatus ? 'Mostrar filtros': 'Ocultar filtros'
-    }}</button>
-  <div *ngIf="filterStatus" class="mb-8">
+  <div class="mb-8">
     <app-table-filter></app-table-filter>
-    <button class="search-button">Buscar</button>
   </div>
   <div *ngIf="carCreateModalStatus">
     <app-car-create-modal (modalChangeEvent)="openModalCreateCar()"></app-car-create-modal>

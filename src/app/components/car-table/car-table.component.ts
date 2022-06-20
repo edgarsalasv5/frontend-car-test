@@ -6,6 +6,7 @@ import { iCar } from 'src/app/store/modules/car/types';
 import { ApiService } from 'src/app/services/api.service';
 import { getCar } from 'src/app/store/modules/car/selector';
 import * as CarActions from 'src/app/store/modules/car/actions';
+import * as moment from 'moment-timezone';
 
 @Component({
   selector: 'app-car-table',
@@ -54,6 +55,10 @@ export class CarTableComponent implements OnDestroy {
         },
       });
     }
+  }
+
+  getFormDate(date: Date | string) {
+    return moment(date).tz("UTC").format('YYYY/MM/DD')
   }
 
   ngOnDestroy(): void {

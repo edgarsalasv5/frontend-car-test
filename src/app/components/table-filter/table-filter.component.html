@@ -1,10 +1,10 @@
-<form class="w-full">
+<form [formGroup]="carForm" (ngSubmit)="onSubmitFilter()" class="w-full mb-8 mt-4">
   <div class="input-container">
     <div class="input-group">
       <label class="input-label">
         Id del auto
       </label>
-      <input class="input-field" type="text" placeholder="1">
+      <input class="input-field" type="text" placeholder="1" formControlName="car_identification">
     </div>
     <div class="input-group">
       <label class="input-label">
@@ -12,7 +12,7 @@
       </label>
       <div class="relative">
         <select formControlName="brand" class="status-selector" id="grid-brand">
-          <option *ngFor="let brand of carBrandList" [value]="brand">{{ brand }}</option>
+          <option *ngFor="let brand of carBrandList" [ngValue]="brand">{{ brand }}</option>
         </select>
         <div class="selector-container">
           <svg class="svg-container" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -25,7 +25,7 @@
       <label class="input-label">
         Modelo
       </label>
-      <input class="input-field" type="text" placeholder="2022">
+      <input formControlName="model" class="input-field" type="number" [min]="2000" [max]="2022" placeholder="2022" />
     </div>
   </div>
   <div class="input-container">
@@ -35,7 +35,7 @@
       </label>
       <div class="relative">
         <select formControlName="color" class="status-selector" id="grid-color">
-          <option *ngFor="let color of carColorList" [value]="color">{{ color }}</option>
+          <option *ngFor="let color of carColorList" [ngValue]="color">{{ color }}</option>
         </select>
         <div class="selector-container">
           <svg class="svg-container" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -49,9 +49,9 @@
         Estado
       </label>
       <div class="relative">
-        <select class="input-field" id="grid-state">
-          <option>Activo</option>
-          <option>Inactivo</option>
+        <select class="input-field" id="grid-state" formControlName="status">
+          <option ngValue="Activo">Activo</option>
+          <option ngValue="Inactivo">Inactivo</option>
         </select>
         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
           <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -61,10 +61,15 @@
       </div>
     </div>
     <div class="input-group">
-      <label class="input-label" for="grid-zip">
+      <label class="main-label" for="grid-zip">
         Fecha de Ingreso
       </label>
-      <input class="input-field" id="grid-zip" type="text" placeholder="90210">
+      <input formControlName="input_date" class="date-input" type="date" placeholder="2022/01/01" />
     </div>
   </div>
+  <div class="flex gap-4">
+    <button type="submit" class="search-button">Buscar</button>
+    <button type="button" class="underline text-gray-700 text-sm" (click)="cleanFilter()">Limpiar filtros</button>
+  </div>
+  
 </form>

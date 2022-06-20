@@ -5,17 +5,10 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
-  filterStatus = false
+export class HomeComponent {
   carCreateModalStatus = false
 
   constructor() {}
-
-  ngOnInit(): void {}
-
-  openFilter() {
-    this.filterStatus = !this.filterStatus
-  }
 
   openModalCreateCar(){
     this.carCreateModalStatus = !this.carCreateModalStatus

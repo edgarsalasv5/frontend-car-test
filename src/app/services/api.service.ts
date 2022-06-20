@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { retry, catchError, map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { ISignInResponse } from '../views/sign-in/sign-in.types';
-import { iCar } from '../store/modules/car/types';
+import { iCar, iCarFilter } from '../store/modules/car/types';
 
 interface ICredentialsSignIn {
   email: string;
@@ -64,6 +64,12 @@ export class ApiService {
 
   updateCar(car: iCar, id: string): Observable<iCar> {
     return this.http.put<iCar>(this.apiURL + '/car/' + id, car)
+      .pipe(retry(1), catchError(this.handleError));
+  }
+
+  filterCars(query: iCarFilter) {
+    const queryUrl = Object.entries(query).map(([key, val]) => `${key}=${val}`).join('&');
+    return this.http.get<iCar[]>(this.apiURL + `/car/filter?${queryUrl}`)
       .pipe(retry(1), catchError(this.handleError));
   }
 

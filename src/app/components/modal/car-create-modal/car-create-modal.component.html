@@ -17,7 +17,7 @@
               <label class="main-label"> Marca </label>
               <div class="relative">
                 <select formControlName="brand" class="status-selector" id="grid-state">
-                  <option *ngFor="let brand of carBrandList" [value]="brand">{{ brand }}</option>
+                  <option *ngFor="let brand of carBrandList" [ngValue]="brand">{{ brand }}</option>
                 </select>
                 <div class="selector-container">
                   <svg class="svg-container" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -30,7 +30,8 @@
           <div class="main-container">
             <div class="container-model">
               <label class="main-label"> Modelo </label>
-              <input formControlName="model" class="input-model" type="number" min="2000" max="2022" placeholder="2022" />
+              <input formControlName="model" class="input-model" type="number" min="2000" max="2022"
+                placeholder="2022" />
             </div>
           </div>
           <div class="sub-3-container">
@@ -38,7 +39,7 @@
               <label class="main-label" for="grid-city"> Color </label>
               <div class="relative">
                 <select formControlName="color" class="status-selector" id="grid-state">
-                  <option *ngFor="let color of carColorList" [value]="color">{{ color }}</option>
+                  <option *ngFor="let color of carColorList" [ngValue]="color">{{ color }}</option>
                 </select>
                 <div class="selector-container">
                   <svg class="svg-container" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -51,8 +52,8 @@
               <label class="main-label" for="grid-state"> Estado </label>
               <div class="relative">
                 <select formControlName="status" class="status-selector" id="grid-state">
-                  <option>Activo</option>
-                  <option>Inactivo</option>
+                  <option ngValue="Activo">Activo</option>
+                  <option ngValue="Inactivo">Inactivo</option>
                 </select>
                 <div class="selector-container">
                   <svg class="svg-container" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">

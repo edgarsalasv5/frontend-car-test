@@ -14,3 +14,11 @@ export interface iCar {
   car_identification: string;
 }
 
+export interface iCarFilter {
+  brand?: string;
+  model?: number;
+  status?: boolean;
+  color?: string;
+  input_date?: string;
+  car_identification?: string;
+}

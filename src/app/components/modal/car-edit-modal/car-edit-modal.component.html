@@ -17,7 +17,7 @@
               <label class="main-label"> Marca </label>
               <div class="relative">
                 <select formControlName="brand" class="status-selector" id="grid-brand">
-                  <option *ngFor="let brand of carBrandList" [value]="brand">{{ brand }}</option>
+                  <option *ngFor="let brand of carBrandList" [ngValue]="brand">{{ brand }}</option>
                 </select>
                 <div class="selector-container">
                   <svg class="svg-container" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -39,7 +39,7 @@
               <label class="main-label" for="grid-city"> Color </label>
               <div class="relative">
                 <select formControlName="color" class="status-selector" id="grid-COLOR">
-                  <option *ngFor="let color of carColorList" [value]="color">{{ color }}</option>
+                  <option *ngFor="let color of carColorList" [ngValue]="color">{{ color }}</option>
                 </select>
                 <div class="selector-container">
                   <svg class="svg-container" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -52,8 +52,8 @@
               <label class="main-label" for="grid-state"> Estado </label>
               <div class="relative">
                 <select formControlName="status" class="status-selector" id="grid-state">
-                  <option>Activo</option>
-                  <option>Inactivo</option>
+                  <option ngValue="Activo">Activo</option>
+                  <option ngValue="Inactivo">Inactivo</option>
                 </select>
                 <div class="selector-container">
                   <svg class="svg-container" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
