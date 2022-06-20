@@ -5,20 +5,20 @@
       <p class="font-logo_admin">Admin<span class="text-orange-500">Car</span></p>
       <h2 class="font-form_header">Registra una cuenta</h2>
     </div>
-    <form class="mt-8 space-y-6" action="#" method="POST">
+    <form class="mt-8 space-y-6" (ngSubmit)="onSubmit()" #signUpForm="ngForm">
       <input type="hidden" name="remember" value="true">
       <div class="font-form_body">
         <div>
           <label for="name" class="sr-only">Name</label>
-          <input id="name" name="name" type="text" autocomplete="off" required class="font-form_field" placeholder="Your Name">
+          <input required [(ngModel)]="credentials.name" id="name" name="name" type="text" autocomplete="off" class="font-form_field" placeholder="Your Name">
         </div>
         <div>
           <label for="email-address" class="sr-only">Email address</label>
-          <input id="email-address" name="email" type="email" autocomplete="email" required class="font-form_field" placeholder="Email address">
+          <input required [(ngModel)]="credentials.email" id="email-address" name="email" type="email" autocomplete="email" class="font-form_field" placeholder="Email address">
         </div>
         <div>
           <label for="password" class="sr-only">Password</label>
-          <input id="password" name="password" type="password" autocomplete="current-password" required class="font-form_field" placeholder="Password">
+          <input required [(ngModel)]="credentials.password" id="password" name="password" type="password" autocomplete="current-password" class="font-form_field" placeholder="Password">
         </div>
       </div>
 

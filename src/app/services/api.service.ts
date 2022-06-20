@@ -42,21 +42,29 @@ export class ApiService {
   }
 
   loadCar(): Observable<iCar[]> {
-    const carName = 'lgraham';
-    const params = new HttpParams().set('username', carName);
     return this.http.get<iCar[]>(this.apiURL + '/car').pipe(
       map((cars) => {
-        if (!cars.length) {
-          throw new Error('not found');
-        }
         return cars;
       })
     );
   }
 
-  saveCar(profile: iCar) {
-    // return this.http.put(`${apiUrl}/cars/${profile.id}`, profile);
-    return of(profile);
+  saveCar(car: iCar): Observable<iCar> {
+    return this.http.post<iCar>(this.apiURL + '/car', car).pipe(
+      map((car) => {
+        if (!car) throw new Error('not found');
+        return car;
+      })
+    )
+  }
+
+  deleteCar(id: string): Observable<iCar> {
+    return this.http.delete<iCar>(this.apiURL + '/car/' + id).pipe(map((response) => response))
+  }
+
+  updateCar(car: iCar, id: string): Observable<iCar> {
+    return this.http.put<iCar>(this.apiURL + '/car/' + id, car)
+      .pipe(retry(1), catchError(this.handleError));
   }
 
 

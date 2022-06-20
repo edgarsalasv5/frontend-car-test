@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { ApiService } from 'src/app/services/api.service';
+import { loadCar } from 'src/app/store/modules/car/actions';
 import { ISignInResponse } from './sign-in.types';
 
 @Component({
@@ -12,7 +14,7 @@ export class SignInComponent implements OnInit {
   credentials = { email: '', password: '' };
   errorMessage = '';
 
-  constructor(private apiService: ApiService, private route: Router) { }
+  constructor(private apiService: ApiService, private store: Store, private route: Router) { }
   ngOnInit(): void { }
 
   onSubmit() {
@@ -24,8 +26,9 @@ export class SignInComponent implements OnInit {
       });
   }
 
-  saveSession({ user, access_token }: ISignInResponse) {
+  saveSession({ access_token }: ISignInResponse) {
     localStorage.setItem('access_token', access_token);
     this.route.navigate(['/'])
+    this.store.dispatch(loadCar())
   }
 }

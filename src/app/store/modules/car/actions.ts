@@ -29,3 +29,36 @@ export const saveCarFailure = createAction(
   '[Car] Save Car Failure',
   props<{ error: any }>()
 );
+
+export const deleteCar = createAction(
+  '[Car] Delete Car',
+  props<{ id: string }>()
+);
+
+export const deleteCarSuccess = createAction(
+  '[Car] Delete Car Success',
+  props<{ id: string }>()
+);
+
+export const deleteCarFailure = createAction(
+  '[Car] Delete Car Failure',
+  props<{ error: any }>()
+);
+
+export const updateCar = createAction(
+  '[Car] Update Car',
+  props<{ car: iCar }>()
+);
+
+export const updateCarSuccess = createAction(
+  '[Car] Update Car Success',
+  props<{ id: string }>()
+);
+
+export const updateCarFailure = createAction(
+  '[Car] Update Car Failure',
+  props<{ error: any }>()
+);
+
+
+

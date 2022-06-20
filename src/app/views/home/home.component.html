@@ -13,11 +13,8 @@
     <app-table-filter></app-table-filter>
     <button class="search-button">Buscar</button>
   </div>
-  <div *ngIf="carCreateModalStatus" class="w-full overflow-auto">
+  <div *ngIf="carCreateModalStatus">
     <app-car-create-modal (modalChangeEvent)="openModalCreateCar()"></app-car-create-modal>
   </div>
-  <!--<div *ngIf="false">
-    <app-create-confirm (modalChangeEvent)="openModalConfirm()"></app-create-confirm>
-  </div>-->
   <app-car-table></app-car-table>
 </main>

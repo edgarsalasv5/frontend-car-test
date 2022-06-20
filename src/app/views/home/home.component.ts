@@ -9,8 +9,9 @@ export class HomeComponent implements OnInit {
   filterStatus = false
   carCreateModalStatus = false
 
-  constructor() { }
-  ngOnInit(): void { }
+  constructor() {}
+
+  ngOnInit(): void {}
 
   openFilter() {
     this.filterStatus = !this.filterStatus

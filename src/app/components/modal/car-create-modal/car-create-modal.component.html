@@ -1,0 +1,86 @@
+<div class="main-modal-container" role="dialog" aria-modal="true">
+  <div class="modal-container-1"></div>
+  <div class="inset-container">
+    <div class="item-container">
+      <div class="card-container">
+        <form class="form" [formGroup]="carForm" (ngSubmit)="onSubmit()">
+          <h3 class="mb-6 text-xl font-bold">Nuevo un auto</h3>
+          <div class="mb-4">
+            <error-message *ngIf="errorMessage" [message]="errorMessage"></error-message>
+          </div>
+          <div class="main-container">
+            <div class="input-1">
+              <label class="main-label"> Id. del auto </label>
+              <input formControlName="car_identification" class="input-id" type="text" placeholder="NUM1N2" />
+            </div>
+            <div class="container-brand">
+              <label class="main-label"> Marca </label>
+              <div class="relative">
+                <select formControlName="brand" class="status-selector" id="grid-state">
+                  <option *ngFor="let brand of carBrandList" [value]="brand">{{ brand }}</option>
+                </select>
+                <div class="selector-container">
+                  <svg class="svg-container" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="main-container">
+            <div class="container-model">
+              <label class="main-label"> Modelo </label>
+              <input formControlName="model" class="input-model" type="number" min="2000" max="2022" placeholder="2022" />
+            </div>
+          </div>
+          <div class="sub-3-container">
+            <div class="sub-3-container-div">
+              <label class="main-label" for="grid-city"> Color </label>
+              <div class="relative">
+                <select formControlName="color" class="status-selector" id="grid-state">
+                  <option *ngFor="let color of carColorList" [value]="color">{{ color }}</option>
+                </select>
+                <div class="selector-container">
+                  <svg class="svg-container" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="sub-3-container-div">
+              <label class="main-label" for="grid-state"> Estado </label>
+              <div class="relative">
+                <select formControlName="status" class="status-selector" id="grid-state">
+                  <option>Activo</option>
+                  <option>Inactivo</option>
+                </select>
+                <div class="selector-container">
+                  <svg class="svg-container" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="sub-3-container-div">
+              <label class="main-label" for="grid-zip">
+                Fecha de Ingreso
+              </label>
+              <input formControlName="input_date" class="date-input" type="date" placeholder="2022/01/01" />
+            </div>
+          </div>
+          <div class="button-container">
+            <button type="submit" class="save-button"
+              [ngClass]="carForm.pristine || carForm.invalid ? 'opacity-25' : 'opacity-100'"
+              (click)="openModalConfirm()" [disabled]="carForm.pristine || carForm.invalid">
+              Guardar
+            </button>
+
+            <button type="button" class="cancel-button" (click)="onChangeModalEmit()">
+              Cancelar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

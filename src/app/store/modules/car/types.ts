@@ -5,12 +5,12 @@ export interface iCarState {
 }
 
 export interface iCar {
-  id: number;
-  name: string;
-  email: string;
-  password: string;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at: Date;
+  _id: string;
+  brand: string;
+  model: string;
+  color: string;
+  status: boolean;
+  input_date: Date;
+  car_identification: string;
 }
 

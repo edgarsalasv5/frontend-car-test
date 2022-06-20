@@ -1,3 +1,12 @@
+<div *ngIf="showModalDeleteConfirm">
+  <app-delete-confirm (modalChangeEvent)="onChangeShowModalDelete()" (deleteCarEvent)="deleteCar()">
+  </app-delete-confirm>
+</div>
+
+<div *ngIf="showModalEditModal">
+  <app-car-edit-modal [carEdit]="carSelected" (modalChangeEvent)="onChangeShowModalEdit()"></app-car-edit-modal>
+</div>
+
 <div class="car-table">
   <div class="flex flex-col">
     <div class="w-full">
@@ -5,7 +14,7 @@
         <table class="w-full">
           <thead class="bg-gray-50">
             <tr>
-              <th class="car-table-header">ID</th>
+              <th class="car-table-header">Id. del auto</th>
               <th class="car-table-header">Marca</th>
               <th class="car-table-header">Modelo</th>
               <th class="car-table-header">Color</th>
@@ -16,122 +25,34 @@
             </tr>
           </thead>
           <tbody class="bg-white">
-            <tr class="whitespace-nowrap">
-              <td class="car-table-body">1</td>
+            <tr class="whitespace-nowrap" *ngFor="let car of cars;let i = index">
+              <td class="car-table-body">{{ car.car_identification }}</td>
               <td class="car-table-body">
-                <div>Jon doe</div>
+                <p>{{ car.brand }}</p>
               </td>
               <td class="car-table-body">
-                <div>jhondoe@example.com</div>
+                <p>{{ car.model }}</p>
               </td>
               <td class="car-table-body">
-                <div>jhondoe@example.com</div>
+                <p>{{ car.color }}</p>
               </td>
-              <td class="car-table-body">2021-1-12</td>
-              <td class="car-table-body">2021-1-12</td>
               <td class="car-table-body">
-                <a
-                  href="#"
-                  class="car-table_edit-button"
-                  >Edit</a
-                >
+                <p>{{ car.input_date | date }}</p>
+              </td>
+              <td class="car-table-body">
+                <p>{{ car.status ? 'Activo' : 'Inactivo' }}</p>
+              </td>
+              <td class="car-table-body">
+                <button class="car-table_edit-button" (click)="selectedCarEdit(car)">Edit</button>
               </td>
               <td class="car-table-body_padding">
-                <a
-                  href="#"
-                  class="car-table_delete-button"
-                  >Delete</a
-                >
-                
-              </td>
-            </tr>
-            <tr class="whitespace-nowrap">
-              <td class="car-table-body">1</td>
-              <td class="car-table-body">
-                <div>Jon doe</div>
-              </td>
-              <td class="car-table-body">
-                <div>jhondoe@example.com</div>
-              </td>
-              <td class="car-table-body">
-                <div>jhondoe@example.com</div>
-              </td>
-              <td class="car-table-body">2021-1-12</td>
-              <td class="car-table-body">2021-1-12</td>
-              <td class="car-table-body">
-                <a
-                  href="#"
-                  class="car-table_edit-button"
-                  >Edit</a
-                >
-              </td>
-              <td class="px-6 py-4">
-                <a
-                  href="#"
-                  class="car-table_delete-button"
-                  >Delete</a
-                >
-              </td>
-            </tr>
-            <tr class="whitespace-nowrap">
-              <td class="car-table-body">1</td>
-              <td class="car-table-body">
-                <div>Jon doe</div>
-              </td>
-              <td class="car-table-body">
-                <div>jhondoe@example.com</div>
-              </td>
-              <td class="car-table-body">
-                <div>jhondoe@example.com</div>
-              </td>
-              <td class="car-table-body">2021-1-12</td>
-              <td class="car-table-body">2021-1-12</td>
-              <td class="car-table-body">
-                <a
-                  href="#"
-                  class="car-table_edit-button"
-                  >Edit</a
-                >
-              </td>
-              <td class="car-table-body_padding">
-                <a
-                  href="#"
-                  class="car-table_delete-button"
-                  >Delete</a
-                >
-                
-              </td>
-            </tr>
-            <tr class="whitespace-nowrap">
-              <td class="car-table-body">1</td>
-              <td class="car-table-body">
-                <div>Jon doe</div>
-              </td>
-              <td class="car-table-body">
-                <div>jhondoe@example.com</div>
-              </td>
-              <td class="car-table-body">
-                <div>jhondoe@example.com</div>
-              </td>
-              <td class="car-table-body">2021-1-12</td>
-              <td class="car-table-body">2021-1-12</td>
-              <td class="car-table-body">
-                <a
-                  href="#"
-                  class="car-table_edit-button"
-                  >Edit</a
-                >
-              </td>
-              <td class="car-table-body_padding">
-                <a
-                  href="#"
-                  class="car-table_delete-button"
-                  >Delete</a
-                >
+                <button class="car-table_delete-button" (click)="selectedCarDelete(car)">Delete</button>
               </td>
             </tr>
           </tbody>
         </table>
+        <p *ngIf="cars.length === 0" class="py-6 text-sm font-bold text-center text-gray-900 w-full">No hay registros
+        </p>
       </div>
     </div>
   </div>

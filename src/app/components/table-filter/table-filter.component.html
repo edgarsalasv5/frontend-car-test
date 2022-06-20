@@ -10,7 +10,16 @@
       <label class="input-label">
         Marca
       </label>
-      <input class="input-field" type="text" placeholder="Audi">
+      <div class="relative">
+        <select formControlName="brand" class="status-selector" id="grid-brand">
+          <option *ngFor="let brand of carBrandList" [value]="brand">{{ brand }}</option>
+        </select>
+        <div class="selector-container">
+          <svg class="svg-container" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+          </svg>
+        </div>
+      </div>
     </div>
     <div class="input-group">
       <label class="input-label">
@@ -21,10 +30,19 @@
   </div>
   <div class="input-container">
     <div class="input-group">
-      <label class="input-label" for="grid-city">
+      <label class="input-label" for="grid-color">
         Color
       </label>
-      <input class="input-field" id="grid-city" type="text" placeholder="Rojo">
+      <div class="relative">
+        <select formControlName="color" class="status-selector" id="grid-color">
+          <option *ngFor="let color of carColorList" [value]="color">{{ color }}</option>
+        </select>
+        <div class="selector-container">
+          <svg class="svg-container" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+          </svg>
+        </div>
+      </div>
     </div>
     <div class="input-group">
       <label class="input-label" for="grid-state">
@@ -36,7 +54,9 @@
           <option>Inactivo</option>
         </select>
         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-          <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+          <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+          </svg>
         </div>
       </div>
     </div>

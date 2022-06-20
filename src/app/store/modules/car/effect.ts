@@ -20,15 +20,11 @@ export class CarEffects implements OnInitEffects {
         this.apiServices.loadCar().pipe(
           map((cars) =>
             CarActions.loadCarSuccess({ cars })
-          ),
-          catchError(error =>
-            of(CarActions.loadCarFailure({ error }))
           )
         )
       )
     )
-  }
-  );
+  });
 
   constructor(
     private actions$: Actions,

@@ -19,8 +19,9 @@ import { CarTableComponent } from './components/car-table/car-table.component';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TableFilterComponent } from './components/table-filter/table-filter.component';
 import { ErrorMessageComponent } from './components/error-message/error-message.component';
-import { CreateConfirmComponent } from './components/create-confirm/create-confirm.component';
-import { CarCreateModalComponent } from './components/car-create-modal/car-create-modal.component';
+import { CarCreateModalComponent } from './components/modal/car-create-modal/car-create-modal.component';
+import { DeleteConfirmComponent } from './components/modal/delete-confirm/delete-confirm.component';
+import { CarEditModalComponent } from './components/modal/car-edit-modal/car-edit-modal.component';
 
 
 @NgModule({
@@ -33,8 +34,9 @@ import { CarCreateModalComponent } from './components/car-create-modal/car-creat
     CarTableComponent,
     TableFilterComponent,
     CarCreateModalComponent,
-    CreateConfirmComponent,
+    DeleteConfirmComponent,
     ErrorMessageComponent,
+    CarEditModalComponent,
   ],
   imports: [
     CommonModule,
@@ -46,10 +48,6 @@ import { CarCreateModalComponent } from './components/car-create-modal/car-creat
     StoreModule.forRoot(reducers,
       {
         metaReducers,
-        runtimeChecks: {
-          strictStateSerializability: true,
-          strictActionSerializability: true
-        }
       }
     ),
     EffectsModule.forRoot([CarEffects]),
