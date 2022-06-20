@@ -11,12 +11,12 @@
           <div class="main-container">
             <div class="input-1">
               <label class="main-label"> Id. del auto </label>
-              <input formControlName="car_identification" class="input-id" type="text" placeholder="NUM1N2" />
+              <input [disabled]="loading" formControlName="car_identification" class="input-id" type="text" placeholder="NUM1N2" />
             </div>
             <div class="container-brand">
               <label class="main-label"> Marca </label>
               <div class="relative">
-                <select formControlName="brand" class="status-selector" id="grid-state">
+                <select [disabled]="loading" formControlName="brand" class="status-selector" id="grid-state">
                   <option *ngFor="let brand of carBrandList" [ngValue]="brand">{{ brand }}</option>
                 </select>
                 <div class="selector-container">
@@ -30,7 +30,7 @@
           <div class="main-container">
             <div class="container-model">
               <label class="main-label"> Modelo </label>
-              <input formControlName="model" class="input-model" type="number" min="2000" max="2022"
+              <input [disabled]="loading" formControlName="model" class="input-model" type="number" min="2000" max="2022"
                 placeholder="2022" />
             </div>
           </div>
@@ -38,7 +38,7 @@
             <div class="sub-3-container-div">
               <label class="main-label" for="grid-city"> Color </label>
               <div class="relative">
-                <select formControlName="color" class="status-selector" id="grid-state">
+                <select [disabled]="loading" formControlName="color" class="status-selector" id="grid-state">
                   <option *ngFor="let color of carColorList" [ngValue]="color">{{ color }}</option>
                 </select>
                 <div class="selector-container">
@@ -51,7 +51,7 @@
             <div class="sub-3-container-div">
               <label class="main-label" for="grid-state"> Estado </label>
               <div class="relative">
-                <select formControlName="status" class="status-selector" id="grid-state">
+                <select [disabled]="loading" formControlName="status" class="status-selector" id="grid-state">
                   <option ngValue="Activo">Activo</option>
                   <option ngValue="Inactivo">Inactivo</option>
                 </select>
@@ -66,17 +66,17 @@
               <label class="main-label" for="grid-zip">
                 Fecha de Ingreso
               </label>
-              <input formControlName="input_date" class="date-input" type="date" placeholder="2022/01/01" />
+              <input [disabled]="loading" formControlName="input_date" class="date-input" type="date" placeholder="2022/01/01" />
             </div>
           </div>
           <div class="button-container">
             <button type="submit" class="save-button"
-              [ngClass]="carForm.pristine || carForm.invalid ? 'opacity-25' : 'opacity-100'"
+              [ngClass]="carForm.pristine || carForm.invalid || loading? 'opacity-25' : 'opacity-100'"
               (click)="openModalConfirm()" [disabled]="carForm.pristine || carForm.invalid">
               Guardar
             </button>
 
-            <button type="button" class="cancel-button" (click)="onChangeModalEmit()">
+            <button type="button" class="cancel-button" (click)="onChangeModalEmit()" [disabled]="loading" [ngClass]="loading ? 'opacity-25' : ''">
               Cancelar
             </button>
           </div>

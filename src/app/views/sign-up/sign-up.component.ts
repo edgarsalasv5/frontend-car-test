@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { ApiService } from 'src/app/services/api.service';
@@ -11,19 +12,31 @@ import { ISignUpResponse } from './sign-up.types';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
-  credentials = { name: '', email: '', password: '' };
+  carForm: FormGroup;
   errorMessage = '';
+  loading = false;
 
-  constructor(private apiService: ApiService, private store: Store, private route: Router) { }
+  constructor(
+    private apiService: ApiService,
+    private store: Store,
+    private route: Router,
+    private fb: FormBuilder) {
+    this.carForm = fb.group({
+      email: ['', Validators.required],
+      name: ['', Validators.required],
+      password: ['', Validators.required],
+    });
+  }
 
   ngOnInit(): void { }
 
   onSubmit() {
-    this.apiService.signUp(this.credentials)
+    this.loading = true 
+    this.apiService.signUp(this.carForm.value)
       .subscribe({
         next: (response: ISignUpResponse) => this.saveSession(response),
         error: (error: string) => this.errorMessage = error,
-        complete: () => console.info('complete') 
+        complete: () => this.loading = false 
       });
   }
 

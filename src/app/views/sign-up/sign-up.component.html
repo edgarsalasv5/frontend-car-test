@@ -1,29 +1,31 @@
-
 <div class="sign-up">
   <div class="sign-up_body">
     <div>
       <p class="font-logo_admin">Admin<span class="text-orange-500">Car</span></p>
       <h2 class="font-form_header">Registra una cuenta</h2>
     </div>
-    <form class="mt-8 space-y-6" (ngSubmit)="onSubmit()" #signUpForm="ngForm">
+    <form class="mt-8 space-y-6" (ngSubmit)="onSubmit()" [formGroup]="carForm">
       <input type="hidden" name="remember" value="true">
       <div class="font-form_body">
         <div>
           <label for="name" class="sr-only">Name</label>
-          <input required [(ngModel)]="credentials.name" id="name" name="name" type="text" autocomplete="off" class="font-form_field" placeholder="Your Name">
+          <input formControlName="name" name="name" type="text" autocomplete="off" class="font-form_field" placeholder="Your Name">
         </div>
         <div>
           <label for="email-address" class="sr-only">Email address</label>
-          <input required [(ngModel)]="credentials.email" id="email-address" name="email" type="email" autocomplete="email" class="font-form_field" placeholder="Email address">
+          <input formControlName="email" name="email" type="email" autocomplete="email" class="font-form_field" placeholder="Email address">
         </div>
         <div>
           <label for="password" class="sr-only">Password</label>
-          <input required [(ngModel)]="credentials.password" id="password" name="password" type="password" autocomplete="current-password" class="font-form_field" placeholder="Password">
+          <input formControlName="password" name="password" type="password" autocomplete="current-password" class="font-form_field"
+            placeholder="Password">
         </div>
       </div>
 
       <div>
-        <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-orange-500 hover:bg-orange-400 focus:outline-none">
+        <button type="submit" [disabled]="carForm.pristine || carForm.invalid || loading"
+          [ngClass]="carForm.pristine || carForm.invalid || loading ? 'opacity-25' : 'opacity-100'"
+          class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-orange-500">
           Registrate
         </button>
       </div>
@@ -33,5 +35,3 @@
     </form>
   </div>
 </div>
-
-

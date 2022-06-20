@@ -17,6 +17,7 @@ export class CarTableComponent implements OnDestroy {
   private subscription: Subscription;
   showModalDeleteConfirm = false;
   showModalEditModal = false;
+  loading = false;
   cars: iCar[] = [];
   carSelected: iCar | null = null;
 
@@ -47,11 +48,13 @@ export class CarTableComponent implements OnDestroy {
   }
 
   deleteCar() {
+    this.loading = true
     if (this.carSelected) {
       this.apiService.deleteCar(this.carSelected._id).subscribe({
         next: () => {
           this.store.dispatch(CarActions.deleteCar({ id: this.carSelected ? this.carSelected._id : '' }));
           this.onChangeShowModalDelete();
+          this.loading = false
         },
       });
     }

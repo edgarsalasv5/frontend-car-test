@@ -13,6 +13,7 @@ import { iCar } from 'src/app/store/modules/car/types';
 export class CarCreateModalComponent {
   @Output() modalChangeEvent =  new EventEmitter();
   confirmModalStatus = false
+  loading = false;
   errorMessage = '';
   carForm: FormGroup;
   carColorList = ['Amarillo', 'Azul', 'Anaranjado', 'Blanco', 'Dorado', 'Marrón', 'Negro', 'Plateado', 'Rojo', 'Verde']
@@ -38,6 +39,7 @@ export class CarCreateModalComponent {
   }
 
   onSubmit() {
+    this.loading = true;
     const car = {
       ...this.carForm.value,
       status: this.carForm.value.status === 'Activo',
@@ -47,11 +49,14 @@ export class CarCreateModalComponent {
       .subscribe({
         next: (car: iCar) => {
           this.store.dispatch(saveCar({ car }));
+          this.onChangeModalEmit();
+          this.errorMessage = '' 
         },
         error: (error: string) => this.errorMessage = error,
-        complete: () => this.errorMessage = '' 
+        complete: () => {
+          this.loading = false;
+        }
       });
     
-    this.onChangeModalEmit();
   }
 }

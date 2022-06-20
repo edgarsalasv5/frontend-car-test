@@ -8,6 +8,7 @@ import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 export class DeleteConfirmComponent implements OnInit {
   @Output() modalChangeEvent =  new EventEmitter();
   @Output() deleteCarEvent =  new EventEmitter();
+  @Input() loading = false;
   
   constructor() { }
   ngOnInit(): void { }

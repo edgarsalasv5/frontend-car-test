@@ -1,5 +1,5 @@
 <div *ngIf="showModalDeleteConfirm">
-  <app-delete-confirm (modalChangeEvent)="onChangeShowModalDelete()" (deleteCarEvent)="deleteCar()">
+  <app-delete-confirm [loading]="loading" (modalChangeEvent)="onChangeShowModalDelete()" (deleteCarEvent)="deleteCar()">
   </app-delete-confirm>
 </div>
 
